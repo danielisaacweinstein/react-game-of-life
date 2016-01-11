@@ -17,16 +17,6 @@ let style = {
 }
 
 export class LifeGrid extends React.Component {
-  getGrid(width) {
-    let outer = (new Array(width)).fill("")
-    return outer.map((outerValue, outerIndex) => {
-      let inner = (new Array(width)).fill("")
-      return inner.map((innerValue, innerIndex) => {
-        return (<div style={style.gridCell}></div>)
-      })
-    })
-  }
-
   render() {
     return (
       <div style={style.grid}>

@@ -1,12 +1,11 @@
 "use strict"
 
 import React from 'react'
+import { connect } from 'react-redux'
 import { LifeGrid } from './LifeGrid.jsx'
 
 export class Life extends React.Component {
   render() {
-    let width = 10
-
     return (
       <div>
         <LifeGrid width={width}/>
@@ -14,3 +13,12 @@ export class Life extends React.Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    gridWidth: state.get('gridWidth'),
+    gridState: state.get('gridState')
+  }
+}
+
+export const LifeContainer = connect(mapStateToProps)(Life)
