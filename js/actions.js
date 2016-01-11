@@ -16,9 +16,18 @@ export function tick() {
   }
 }
 
-export function highlightCell(cellIndex) {
+export function highlight(cellIndex) {
   return {
     type: 'HIGHLIGHT_CELL',
+    data: {
+      index: cellIndex
+    }
+  }
+}
+
+export function unhighlight(cellIndex) {
+  return {
+    type: 'UNHIGHLIGHT_CELL',
     data: {
       index: cellIndex
     }

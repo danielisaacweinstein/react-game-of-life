@@ -19,10 +19,7 @@ export class LifeGrid extends React.Component {
           <Cell
             index={[rowIndex, cellIndex]}
             alive={currentState[rowIndex][cellIndex].alive}
-            onCellClick={
-              (i) => this.props.onCellClick(i)
-            }
-          />
+            onCellClick={ this.props.onCellClick } />
         )
       })
 

@@ -34,7 +34,9 @@ function unhighlightCell(state, incomingData) {
 }
 
 function tick(state, incomingData) {
-  console.log("OMG")
+  
+
+  
   return state
 }
 

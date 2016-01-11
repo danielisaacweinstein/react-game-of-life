@@ -7,7 +7,7 @@ let style = {
     width: '20px',
     height: '20px',
     margin: '5px',
-    display: 'inline-block'    
+    display: 'inline-block'
   },
   dead: {
     backgroundColor: '#b3b3b3'    
@@ -18,6 +18,10 @@ let style = {
 }
 
 export class Cell extends React.Component {
+  handleClick() {
+    this.props.onCellClick(this.props.index, this.props.alive)
+  }
+
   render() {
     let currentStyle =
       Object.assign({},
@@ -27,7 +31,7 @@ export class Cell extends React.Component {
     return (
       <div
       style={currentStyle}
-      onClick={() => {this.props.onCellClick(this.props.index)}} />
+      onClick={this.handleClick.bind(this)} />
     );
   }
 }
