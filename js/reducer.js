@@ -1,6 +1,7 @@
 import * as Immutable from 'immutable'
 
-// Return new state as an Immutable two-dimentional array
+// Create new object which maps gridState to 2D Immutable array,
+// and merge the results back into the prior state.
 function setInitialState(state, incomingData) {
   let width = incomingData.gridWidth
   let outerArray = []
@@ -14,14 +15,27 @@ function setInitialState(state, incomingData) {
     }
     outerArray.push(innerArray)
   }
-  
+
   return state.merge({gridState: Immutable.fromJS(outerArray)})
 }
 
+// Take the index supplied in incomingData, and use it to highlight
+// the cell located at that index.
 function highlightCell(state, incomingData) {
   let index = incomingData.index;
   return state.updateIn(['gridState', index[0], index[1], 'alive'],
                                 (value) => {return true})
+}
+
+function unhighlightCell(state, incomingData) {
+  let index = incomingData.index;
+  return state.updateIn(['gridState', index[0], index[1], 'alive'],
+                                (value) => {return false})
+}
+
+function tick(state, incomingData) {
+  console.log("OMG")
+  return state
 }
 
 function reducer(state = Immutable.Map(), action) {
@@ -31,6 +45,10 @@ function reducer(state = Immutable.Map(), action) {
       return setInitialState(state, action.data)
     case 'HIGHLIGHT_CELL':
       return highlightCell(state, action.data)
+    case 'UNHIGHLIGHT_CELL':
+      return unhighlightCell(state, action.data)
+    case 'TICK':
+      return tick(state, action.data)
   }
   return state
 }

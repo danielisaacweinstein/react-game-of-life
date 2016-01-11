@@ -10,6 +10,12 @@ export function setInitialState() {
   }
 }
 
+export function tick() {
+  return {
+    type: 'TICK'
+  }
+}
+
 export function highlightCell(cellIndex) {
   return {
     type: 'HIGHLIGHT_CELL',

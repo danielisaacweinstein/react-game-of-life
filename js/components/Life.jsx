@@ -3,7 +3,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { LifeGrid } from './LifeGrid.jsx'
-import { highlightCell } from '../actions.js'
+import { TickButton } from './TickButton.jsx'
+import { highlightCell, tick } from '../actions.js'
 
 export class Life extends React.Component {
   render() {
@@ -11,12 +12,14 @@ export class Life extends React.Component {
 
     return (
       <div>
+        <TickButton
+          onButtonClick={ () => { dispatch(tick()) } }
+        />
         <LifeGrid
-        width={this.props.gridWidth}
-        gridState={this.props.gridState}
-        onCellClick={
-         (i) => { dispatch(highlightCell(i)) }
-        } />
+          width={this.props.gridWidth}
+          gridState={this.props.gridState}
+          onCellClick={ (i) => { dispatch(highlightCell(i)) } }
+        />
       </div>
     );
   }
