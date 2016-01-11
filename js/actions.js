@@ -6,6 +6,7 @@ export function setInitialState() {
     data: {
       gridWidth: 5,
       gridState: []
-    }
+    } 
   }
 }
+

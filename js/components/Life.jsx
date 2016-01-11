@@ -8,7 +8,9 @@ export class Life extends React.Component {
   render() {
     return (
       <div>
-        <LifeGrid width={width}/>
+        <LifeGrid
+         width={this.props.gridWidth}
+         gridState={this.props.gridState} />
       </div>
     );
   }

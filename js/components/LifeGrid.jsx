@@ -1,28 +1,37 @@
 "use strict"
 
 import React from 'react'
+import { Cell } from './Cell.jsx'
 
-let style = {
-  gridCell: {
-    backgroundColor: 'black',
-    width: '20px',
-    height: '20px',
-    margin: '5px',
-    display: 'inline-block'
-  },
-  grid: {
-    width: '160px',
-    height: '160px'
-  }
+let gridStyle = {
+  backgroundColor: '#e6e6e6',
+  width: '160px',
+  height: '160px'
 }
 
 export class LifeGrid extends React.Component {
+  collectCells(gridState) {
+    let currentState = gridState.toJS() // Extract state from Immutable List into 2D array
+
+    let cellRows = currentState.map((row, rowIndex) => {
+      let cells = row.map((cell, cellIndex) => {
+        return (<Cell
+                 index={[rowIndex, cellIndex]}
+                 alive={currentState[rowIndex][cellIndex].alive} />
+        )
+      })
+
+      return cells
+    })
+
+  return cellRows
+  }
+
   render() {
     return (
-      <div style={style.grid}>
-        {this.getGrid(5)}
+      <div style={gridStyle}>
+        {this.collectCells(this.props.gridState)}
       </div>
     );
   }
 }
-
