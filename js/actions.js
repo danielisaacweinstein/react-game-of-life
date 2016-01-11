@@ -10,3 +10,11 @@ export function setInitialState() {
   }
 }
 
+export function highlightCell(cellIndex) {
+  return {
+    type: 'HIGHLIGHT_CELL',
+    data: {
+      index: cellIndex
+    }
+  }
+}

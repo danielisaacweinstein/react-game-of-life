@@ -16,8 +16,11 @@ export class LifeGrid extends React.Component {
     let cellRows = currentState.map((row, rowIndex) => {
       let cells = row.map((cell, cellIndex) => {
         return (<Cell
-                 index={[rowIndex, cellIndex]}
-                 alive={currentState[rowIndex][cellIndex].alive} />
+                index={[rowIndex, cellIndex]}
+                alive={currentState[rowIndex][cellIndex].alive}
+                onCellClick={
+                  (i) => this.props.onCellClick(i)
+                } />
         )
       })
 

@@ -25,8 +25,9 @@ export class Cell extends React.Component {
                     this.props.alive ? style.alive : style.dead)
 
     return (
-      <div style={currentStyle}>
-      </div>
+      <div
+      style={currentStyle}
+      onClick={() => {this.props.onCellClick(this.props.index)}} />
     );
   }
 }
