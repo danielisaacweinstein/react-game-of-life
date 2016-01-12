@@ -6,34 +6,46 @@
 // 3) A live cell with > 3 live neighbor dies.
 // 4) A dead cell with 3 live neighbors comes back to life.
 
-// [-1, 0]  // West
-// [-1, 1]  // Northwest
-// [0, 1]   // North
-// [1, 1]   // Northeast
-// [1, 0]   // East
-// [1, -1]  // Southeast
-// [0, -1]  // South
-// [-1, -1] // Southwest
+function getLiveNeighborCount(gridState) {  
+  let [x, y] = this.getIn(['index']).toJS()
+  
+  let directions = [[-1, 0],    // West
+                    [-1, 1],    // Northwest
+                    [0, 1],     // North
+                    [1, 1],     // Northeast
+                    [1, 0],     // East
+                    [1, -1],    // Southeast
+                    [0, -1],    // South
+                    [-1, -1]]   // Southwest
+ 
+  let liveNeighborCount = 0
+ 
+  directions.forEach((d) => {
+    liveNeighborCount += gridState.getIn([x + d[0], y + d[1], 'alive']) ? 1 : 0
+  })
 
-// function countLiveNeighbords(cell, gridState) {
+  return liveNeighborCount;
+}
 
-// }
+function updateCell(count) {
+}
+
 
 export function tick(state, incomingData) {
-  debugger;
   let gridState = state.getIn(['gridState'])
-  let that = this;
-  nextState = gridState.map((list) => {
-    debugger;
-    return list.map((cell) => {
-      let index = cell.getIn(['index']).toJS()
-      
-      // gridState.getIn([index[0], index[1], 'alive'])
 
-      // cell.getIn(['index', ])
+  let nextState = gridState.map(
+    ((row, i, gridContext) => {
+      row.map(
+        ((cell, j, rowContext) => {
+          let count = getLiveNeighborCount.call(cell, gridState);
 
-      // debugger;
-      return "1"
-    })}
+          debugger;
+          // let updatedCell = updateCell.call(cell, count)
+          // return updatedCell
+        }), gridState
+      )
+    }), gridState
   )
+
 }
