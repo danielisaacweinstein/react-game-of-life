@@ -28,21 +28,31 @@ function getLiveNeighborCount(gridState) {
 }
 
 function updateCell(count) {
-}
+  let currentlyAlive = this.getIn(['alive']);
 
+  switch (true) {
+    case (currentlyAlive && count < 2):
+      return this.updateIn(['alive'], () => {return false})
+    case (currentlyAlive && (count == 2 || count == 3)):
+      return this.updateIn(['alive'], () => {return true})
+    case (currentlyAlive && count > 3):
+      return this.updateIn(['alive'], () => {return false})
+    case (!currentlyAlive && count == 3):
+      return this.updateIn(['alive'], () => {return true})
+    default:
+      return this
+  }
+}
 
 export function tick(state, incomingData) {
   let gridState = state.getIn(['gridState'])
 
   let nextState = gridState.map(
     ((row, i, gridContext) => {
-      row.map(
+      return row.map(
         ((cell, j, rowContext) => {
           let count = getLiveNeighborCount.call(cell, gridState);
-
-          debugger;
-          // let updatedCell = updateCell.call(cell, count)
-          // return updatedCell
+          return updateCell.call(cell, count)
         }), gridState
       )
     }), gridState
