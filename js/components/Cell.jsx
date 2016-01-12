@@ -14,12 +14,13 @@ export class Cell extends React.Component {
       'cell--dead': !this.props.alive,
       'cell--alive': this.props.alive
     });
-    
+
     return (
-      <div
-      className={cellClass}
-      onClick={this.handleClick.bind(this)} />
-    );
+      <td
+        className={cellClass}
+        onClick={this.handleClick.bind(this)} />
+    )
+
   }
 }
 

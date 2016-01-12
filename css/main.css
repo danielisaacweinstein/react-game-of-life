@@ -1,8 +1,6 @@
 .cell {
   width: 10px;
   height: 10px;
-  margin: 0px 4px 0px 2px;
-  display: inline-block;
 }
 
 .cell--dead {
@@ -15,6 +13,4 @@
 
 .grid {
   background-color: #e6e6e6;
-  width: 160px;
-  height: 160px;
 }
