@@ -12,7 +12,10 @@ export function setInitialState() {
 
 export function tick() {
   return {
-    type: 'TICK'
+    type: 'TICK',
+    data: {
+      
+    }
   }
 }
 

@@ -1,1 +1,1 @@
-# react_redux_experimentation
+An implementation of Conway's Game of Life using React, Redux, and Immutable.js.

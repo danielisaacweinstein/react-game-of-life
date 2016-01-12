@@ -11,7 +11,7 @@ export class TickButton extends React.Component {
     return (
       <div >
         <button
-          onClick={this.handleClick}>
+          onClick={this.handleClick.bind(this)}>
           Tick.
         </button>
       </div>

@@ -1,4 +1,5 @@
 import * as Immutable from 'immutable'
+import { tick } from './gameOfLifeLogic.js'
 
 // Create new object which maps gridState to 2D Immutable array,
 // and merge the results back into the prior state.
@@ -31,13 +32,6 @@ function unhighlightCell(state, incomingData) {
   let index = incomingData.index;
   return state.updateIn(['gridState', index[0], index[1], 'alive'],
                                 (value) => {return false})
-}
-
-function tick(state, incomingData) {
-  
-
-  
-  return state
 }
 
 function reducer(state = Immutable.Map(), action) {
