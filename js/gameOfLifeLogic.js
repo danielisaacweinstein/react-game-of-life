@@ -58,4 +58,5 @@ export function tick(state, incomingData) {
     }), gridState
   )
 
+  return state.updateIn(['gridState'], () => {return nextState})
 }
