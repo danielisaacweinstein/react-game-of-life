@@ -4,7 +4,7 @@ export function setInitialState() {
   return {
     type: 'SET_INITIAL_STATE',
     data: {
-      gridWidth: 5,
+      gridWidth: 10,
       gridState: []
     } 
   }
@@ -14,7 +14,7 @@ export function tick() {
   return {
     type: 'TICK',
     data: {
-      
+
     }
   }
 }

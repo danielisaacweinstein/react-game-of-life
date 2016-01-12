@@ -1,21 +1,7 @@
 "use strict"
 
 import React from 'react'
-
-let style = {
-  base: {
-    width: '20px',
-    height: '20px',
-    margin: '5px',
-    display: 'inline-block'
-  },
-  dead: {
-    backgroundColor: '#b3b3b3'    
-  },
-  alive: {
-    backgroundColor: '#1a1a1a'
-  }
-}
+import classNames from 'classnames'
 
 export class Cell extends React.Component {
   handleClick() {
@@ -23,14 +9,15 @@ export class Cell extends React.Component {
   }
 
   render() {
-    let currentStyle =
-      Object.assign({},
-                    style.base,
-                    this.props.alive ? style.alive : style.dead)
-
+    var cellClass = classNames({
+      'cell': true,
+      'cell--dead': !this.props.alive,
+      'cell--alive': this.props.alive
+    });
+    
     return (
       <div
-      style={currentStyle}
+      className={cellClass}
       onClick={this.handleClick.bind(this)} />
     );
   }

@@ -1,13 +1,8 @@
 "use strict"
 
 import React from 'react'
+import classNames from 'classnames'
 import { Cell } from './Cell.jsx'
-
-let gridStyle = {
-  backgroundColor: '#e6e6e6',
-  width: '160px',
-  height: '160px'
-}
 
 export class LifeGrid extends React.Component {
   collectCells(gridState) {
@@ -30,8 +25,12 @@ export class LifeGrid extends React.Component {
   }
 
   render() {
+    var gridClass = classNames({
+      'grid': true
+    });
+
     return (
-      <div style={gridStyle}>
+      <div className={gridClass}>
         {this.collectCells(this.props.gridState)}
       </div>
     );
