@@ -7,7 +7,7 @@
 // 4) A dead cell with 3 live neighbors comes back to life.
 
 function getLiveNeighborCount(gridState) {  
-  let [x, y] = this.getIn(['index']).toJS()
+  let [x, y] = this.getIn(['index']).toJS();
   
   let directions = [[-1, 0],    // West
                     [-1, 1],    // Northwest
@@ -18,10 +18,10 @@ function getLiveNeighborCount(gridState) {
                     [0, -1],    // South
                     [-1, -1]]   // Southwest
  
-  let liveNeighborCount = 0
+  let liveNeighborCount = 0;
  
   directions.forEach((d) => {
-    liveNeighborCount += gridState.getIn([x + d[0], y + d[1], 'alive']) ? 1 : 0
+    liveNeighborCount += gridState.getIn([x + d[0], y + d[1], 'alive']) ? 1 : 0;
   })
 
   return liveNeighborCount;
@@ -30,33 +30,35 @@ function getLiveNeighborCount(gridState) {
 function updateCell(count) {
   let currentlyAlive = this.getIn(['alive']);
 
-  switch (true) {
+  return this.updateIn(['alive'], () => {
+    switch (true) {
     case (currentlyAlive && count < 2):
-      return this.updateIn(['alive'], () => {return false})
+      return false;
     case (currentlyAlive && (count == 2 || count == 3)):
-      return this.updateIn(['alive'], () => {return true})
+      return true;
     case (currentlyAlive && count > 3):
-      return this.updateIn(['alive'], () => {return false})
+      return false;
     case (!currentlyAlive && count == 3):
-      return this.updateIn(['alive'], () => {return true})
+      return true;
     default:
-      return this
-  }
+      return false;
+    }
+  });
 }
 
 export function tick(state, incomingData) {
-  let gridState = state.getIn(['gridState'])
+  let gridState = state.getIn(['gridState']);
 
   let nextState = gridState.map(
     ((row, i, gridContext) => {
       return row.map(
         ((cell, j, rowContext) => {
           let count = getLiveNeighborCount.call(cell, gridState);
-          return updateCell.call(cell, count)
+          return updateCell.call(cell, count);
         }), gridState
-      )
+      );
     }), gridState
-  )
+  );
 
-  return state.updateIn(['gridState'], () => {return nextState})
+  return state.updateIn(['gridState'], () => {return nextState});
 }

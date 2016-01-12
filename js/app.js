@@ -8,9 +8,9 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import { setInitialState } from './actions.js'
 
-const store = createStore(reducer)
+const store = createStore(reducer);
 
-store.dispatch(setInitialState())
+store.dispatch(setInitialState());
 
 ReactDOM.render(
   <Provider store={store}>

@@ -28,10 +28,10 @@ export class LifeGrid extends React.Component {
                       alive={currentState[rowIndex][cellIndex].alive}
                       onCellClick={this.props.onCellClick}
                     />
-                  )
+                  );
                 })}
               </tr>
-            )
+            );
           })
         }
         </tbody>

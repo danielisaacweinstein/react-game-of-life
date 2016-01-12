@@ -4,7 +4,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { LifeGrid } from './LifeGrid.jsx'
 import { TickButton } from './TickButton.jsx'
-import { highlight, unhighlight, tick } from '../actions.js'
+import { PauseButton } from './PauseButton.jsx'
+import { highlight, unhighlight, tick, pause, unpause } from '../actions.js'
 
 export class Life extends React.Component {
   onCellClick(index, currentlyLive) {
@@ -13,15 +14,37 @@ export class Life extends React.Component {
   }
 
   onButtonClick() {
-    this.props.dispatch(tick())
+    this.props.dispatch(tick());
+  }
+
+  onPauseClick(isPaused) {
+    isPaused ? this.props.dispatch(unpause()):
+               this.props.dispatch(pause())
+  }
+
+  tickCycle() {
+    if (!this.props.isPaused) {
+      this.props.dispatch(tick());
+    }
+
+    requestAnimationFrame(this.tickCycle);
+  }
+
+  componentDidMount() {
+    this.tickCycle();
   }
 
   render() {
-    const { dispatch, gridWidth, gridState } = this.props
+    const { dispatch, gridWidth, gridState, isPaused } = this.props;
+
     return (
       <div>
         <TickButton
           onButtonClick={this.onButtonClick.bind(this)}
+        />
+        <PauseButton
+          isPaused={this.props.isPaused}
+          onPauseClick={this.onPauseClick.bind(this)}
         />
         <LifeGrid
           width={this.props.gridWidth}
@@ -36,8 +59,9 @@ export class Life extends React.Component {
 function mapStateToProps(state) {
   return {
     gridWidth: state.get('gridWidth'),
-    gridState: state.get('gridState')
+    gridState: state.get('gridState'),
+    isPaused: state.get('isPaused')
   }
 }
 
-export const LifeContainer = connect(mapStateToProps)(Life)
+export const LifeContainer = connect(mapStateToProps)(Life);

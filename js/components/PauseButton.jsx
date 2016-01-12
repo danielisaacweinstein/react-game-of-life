@@ -2,9 +2,10 @@
 
 import React from 'react'
 
-export class TickButton extends React.Component {
+export class PauseButton extends React.Component {
   handleClick() {
-    this.props.onButtonClick();
+    // debugger;
+    this.props.onPauseClick(this.props.isPaused);
   }
 
   render() {
@@ -12,7 +13,7 @@ export class TickButton extends React.Component {
       <div>
         <button
           onClick={this.handleClick.bind(this)}>
-          Tick.
+          Pause/Unpause.
         </button>
       </div>
     );
