@@ -3,8 +3,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { LifeGrid } from './LifeGrid.jsx'
-import { TickButton } from './TickButton.jsx'
-import { PauseButton } from './PauseButton.jsx'
+import { ButtonPanel } from './ButtonPanel.jsx'
 import { highlight, unhighlight, tick, pause, unpause } from '../actions.js'
 
 export class Life extends React.Component {
@@ -53,11 +52,9 @@ export class Life extends React.Component {
 
     return (
       <div>
-        <TickButton
-          onTickClick={this.onTickClick.bind(this)}
-        />
-        <PauseButton
+        <ButtonPanel
           isPaused={this.props.isPaused}
+          onTickClick={this.onTickClick.bind(this)}
           onPauseClick={this.onPauseClick.bind(this)}
         />
         <LifeGrid
