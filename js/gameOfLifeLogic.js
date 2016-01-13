@@ -21,8 +21,19 @@ function getLiveNeighborCount(gridState) {
   let liveNeighborCount = 0;
  
   directions.forEach((d) => {
-    liveNeighborCount += gridState.getIn([x + d[0], y + d[1], 'alive']) ? 1 : 0;
-  })
+    let neighborX = x + d[0];
+    let neighborY = y + d[1];
+
+    // Check that neighbor is adjacent to current square. Otherwise,
+    // Immutable will access the wrong side of the List.
+    let neighborOnGrid = (neighborX > 0 && neighborY > 0 &&
+                           neighborX < gridState.size &&
+                           neighborY < gridState.size)
+
+    if (neighborOnGrid) {
+      liveNeighborCount += gridState.getIn([x + d[0], y + d[1], 'alive']) ? 1 : 0;
+    }
+  });
 
   return liveNeighborCount;
 }
