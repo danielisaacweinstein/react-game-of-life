@@ -1,6 +1,7 @@
 "use strict"
 
 import React from 'react'
+import { Button } from 'belle'
 
 export class TickButton extends React.Component {
   handleClick() {
@@ -10,10 +11,11 @@ export class TickButton extends React.Component {
   render() {
     return (
       <div>
-        <button
+        <Button
+          primary
           onClick={this.handleClick.bind(this)}>
-          Tick.
-        </button>
+            Tick.
+        </Button>
       </div>
     );
   }

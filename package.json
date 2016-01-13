@@ -37,6 +37,7 @@
   "dependencies": {
     "babel-loader": "^6.2.1",
     "babel-preset-react": "^6.3.13",
+    "belle": "^2.0.3",
     "classnames": "^2.2.3",
     "history": "^1.17.0",
     "immutable": "^3.7.6",

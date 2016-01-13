@@ -1,6 +1,7 @@
 "use strict"
 
 import React from 'react'
+import { Button } from 'belle'
 
 export class PauseButton extends React.Component {
   handleClick() {
@@ -8,12 +9,15 @@ export class PauseButton extends React.Component {
   }
 
   render() {
+    let buttonText = this.props.isPaused ? "Play" : "Pause";
+
     return (
       <div>
-        <button
+        <Button
+          primary
           onClick={this.handleClick.bind(this)}>
-          Pause/Unpause.
-        </button>
+          {buttonText}
+        </Button>
       </div>
     );
   }
