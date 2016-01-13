@@ -4,7 +4,7 @@ import React from 'react'
 
 export class TickButton extends React.Component {
   handleClick() {
-    this.props.onButtonClick();
+    this.props.onTickClick();
   }
 
   render() {

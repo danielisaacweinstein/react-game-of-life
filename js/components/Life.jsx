@@ -27,9 +27,8 @@ export class Life extends React.Component {
       this.props.dispatch(tick());
     }
 
-    // Bind this.tickCycle to this so that requestAnimFrame
-    // calls it in the same context as the first cycle. As a
-    // result, tickCycle will always have access to this.props.
+    // Bind this.tickCycle to this so that requestAnimFrame always
+    // calls it with the same context, with access to this.props.
     requestAnimFrame(this.tickCycle.bind(this));
   }
 
@@ -50,12 +49,12 @@ export class Life extends React.Component {
   }
 
   render() {
-    const { dispatch, gridWidth, gridState, isPaused } = this.props;
+    const { dispatch } = this.props;
 
     return (
       <div>
         <TickButton
-          onButtonClick={this.onTickClick.bind(this)}
+          onTickClick={this.onTickClick.bind(this)}
         />
         <PauseButton
           isPaused={this.props.isPaused}
