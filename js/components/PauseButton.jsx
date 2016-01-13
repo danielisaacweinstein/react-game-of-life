@@ -4,7 +4,6 @@ import React from 'react'
 
 export class PauseButton extends React.Component {
   handleClick() {
-    // debugger;
     this.props.onPauseClick(this.props.isPaused);
   }
 

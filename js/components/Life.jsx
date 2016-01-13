@@ -13,7 +13,7 @@ export class Life extends React.Component {
                     this.props.dispatch(highlight(index))
   }
 
-  onButtonClick() {
+  onTickClick() {
     this.props.dispatch(tick());
   }
 
@@ -27,10 +27,25 @@ export class Life extends React.Component {
       this.props.dispatch(tick());
     }
 
-    requestAnimationFrame(this.tickCycle);
+    // Bind this.tickCycle to this so that requestAnimFrame
+    // calls it in the same context as the first cycle. As a
+    // result, tickCycle will always have access to this.props.
+    requestAnimFrame(this.tickCycle.bind(this));
+  }
+
+  establishAnimationFrame() {
+    window.requestAnimFrame = (function() {
+    return  window.requestAnimationFrame       ||
+            window.webkitRequestAnimationFrame ||
+            window.mozRequestAnimationFrame    ||
+            function(callback) {
+                window.setTimeout(callback, 1000 / 60);
+            };
+    })();
   }
 
   componentDidMount() {
+    this.establishAnimationFrame();
     this.tickCycle();
   }
 
@@ -40,7 +55,7 @@ export class Life extends React.Component {
     return (
       <div>
         <TickButton
-          onButtonClick={this.onButtonClick.bind(this)}
+          onButtonClick={this.onTickClick.bind(this)}
         />
         <PauseButton
           isPaused={this.props.isPaused}
