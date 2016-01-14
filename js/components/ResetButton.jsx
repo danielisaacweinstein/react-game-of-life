@@ -3,9 +3,9 @@
 import React from 'react'
 import { Button } from 'belle'
 
-export class TickButton extends React.Component {
+export class ResetButton extends React.Component {
   handleClick() {
-    this.props.onTickClick();
+    this.props.onResetClick();
   }
 
   render() {
@@ -14,7 +14,7 @@ export class TickButton extends React.Component {
         <Button
           primary
           onClick={this.handleClick.bind(this)}>
-            Tick.
+            Reset.
         </Button>
       </span>
     );

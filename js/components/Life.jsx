@@ -3,8 +3,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { LifeGrid } from './LifeGrid.jsx'
-import { ButtonPanel } from './ButtonPanel.jsx'
-import { highlight, unhighlight, tick, pause, unpause } from '../actions.js'
+import { ControlPanel } from './ControlPanel.jsx'
+import { highlight, unhighlight, tick, pause, unpause, setInitialState } from '../actions.js'
 
 export class Life extends React.Component {
   onCellClick(index, currentlyLive) {
@@ -14,6 +14,10 @@ export class Life extends React.Component {
 
   onTickClick() {
     this.props.dispatch(tick());
+  }
+
+  onResetClick() {
+    this.props.dispatch(setInitialState());
   }
 
   onPauseClick(isPaused) {
@@ -51,11 +55,12 @@ export class Life extends React.Component {
     const { dispatch } = this.props;
 
     return (
-      <div>
-        <ButtonPanel
+      <div className='main-panel'>
+        <ControlPanel
           isPaused={this.props.isPaused}
           onTickClick={this.onTickClick.bind(this)}
           onPauseClick={this.onPauseClick.bind(this)}
+          onResetClick={this.onResetClick.bind(this)}
         />
         <LifeGrid
           width={this.props.gridWidth}

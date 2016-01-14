@@ -9,16 +9,16 @@ export class PauseButton extends React.Component {
   }
 
   render() {
-    let buttonText = this.props.isPaused ? "Play" : "Pause";
+    let buttonText = this.props.isPaused ? "Play." : "Pause.";
 
     return (
-      <div>
+      <span className='button'>
         <Button
           primary
           onClick={this.handleClick.bind(this)}>
           {buttonText}
         </Button>
-      </div>
+      </span>
     );
   }
 }
