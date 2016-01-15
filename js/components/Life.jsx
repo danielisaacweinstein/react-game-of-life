@@ -53,19 +53,23 @@ export class Life extends React.Component {
 
   render() {
     const { dispatch } = this.props;
+    let title = "Conway's Game of Life"
 
     return (
       <div className='main-panel'>
+        <div className='banner'>
+          {title}
+        </div>
+        <LifeGrid
+          width={this.props.gridWidth}
+          gridState={this.props.gridState}
+          onCellClick={this.onCellClick.bind(this)}
+        />
         <ControlPanel
           isPaused={this.props.isPaused}
           onTickClick={this.onTickClick.bind(this)}
           onPauseClick={this.onPauseClick.bind(this)}
           onResetClick={this.onResetClick.bind(this)}
-        />
-        <LifeGrid
-          width={this.props.gridWidth}
-          gridState={this.props.gridState}
-          onCellClick={this.onCellClick.bind(this)}
         />
       </div>
     );

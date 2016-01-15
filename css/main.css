@@ -1,3 +1,55 @@
+body {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.main-panel {
+  margin: 0 auto;
+  display: inline-block;
+  font-family: Avenir;
+}
+
+.buttonPanel {
+  text-align: center;
+}
+
+.button {
+  text-align: center;
+  font-family: Avenir-light;
+  color: #466083;
+  font-size: 22px;
+  text-transform: uppercase;
+  margin: 0 4% 0 4%;
+  display: inline-block;
+
+  border: 1px solid;
+  border-color: #061A36;
+
+  /*background-color: #E1F1F5;*/
+  display: inline-block;
+  cursor: pointer;
+  padding: 7px 10px 5px 10px;
+
+  transition: color 0.5s ease;
+}
+
+.button:hover {
+  color: #061A36;
+}
+
+.unselectable {
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;  
+}
+
+.banner {
+  color: #061A36;
+  font-size: 30px;
+  font-family: Avenir-black;
+  text-transform: uppercase;
+}
+
 .cell {
   width: 8px;
   height: 8px;

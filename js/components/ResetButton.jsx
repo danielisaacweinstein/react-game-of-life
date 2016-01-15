@@ -1,7 +1,7 @@
 "use strict"
 
 import React from 'react'
-import { Button } from 'belle'
+import classNames from 'classnames'
 
 export class ResetButton extends React.Component {
   handleClick() {
@@ -9,14 +9,17 @@ export class ResetButton extends React.Component {
   }
 
   render() {
+    let cssStyling = classNames({
+      'unselectable': true,
+      'button': true,
+    })
+
     return (
-      <span className='button'>
-        <Button
-          primary
-          onClick={this.handleClick.bind(this)}>
-            Reset.
-        </Button>
-      </span>
+      <div
+        className={cssStyling}
+        onClick={this.handleClick.bind(this)}>
+          Reset.
+      </div>
     );
   }
 }
