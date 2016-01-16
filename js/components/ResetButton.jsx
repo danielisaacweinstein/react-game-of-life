@@ -18,7 +18,7 @@ export class ResetButton extends React.Component {
       <div
         className={cssStyling}
         onClick={this.handleClick.bind(this)}>
-          Reset.
+          Reset
       </div>
     );
   }

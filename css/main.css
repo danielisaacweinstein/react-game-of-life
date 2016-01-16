@@ -5,6 +5,7 @@ body {
 
 .main-panel {
   margin: 0 auto;
+  text-align: center;
   display: inline-block;
   font-family: Avenir;
 }
@@ -16,25 +17,42 @@ body {
 .button {
   text-align: center;
   font-family: Avenir-light;
-  color: #466083;
+  color: #4E78B2;
   font-size: 22px;
   text-transform: uppercase;
-  margin: 0 4% 0 4%;
+  margin: 3px 25px 3px 25px;
   display: inline-block;
+  border-radius: 2px;
 
   border: 1px solid;
-  border-color: #061A36;
+  border-color: #4E78B2;
 
-  /*background-color: #E1F1F5;*/
   display: inline-block;
   cursor: pointer;
-  padding: 7px 10px 5px 10px;
+  padding: 3px 10px 2px 10px;
 
-  transition: color 0.5s ease;
+  transition: color 0.5s ease, border-color 0.5s ease;
 }
 
 .button:hover {
-  color: #061A36;
+  color: #0A336C;
+  border-color: #0A336C;
+}
+
+.unpaused {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: #f2fff6;
+  }
+  50% {
+    background-color: #d6ffe3;
+  }
+  100% {
+    background-color: #f2fff6;
+  }
 }
 
 .unselectable {
@@ -44,9 +62,9 @@ body {
 }
 
 .banner {
-  color: #061A36;
-  font-size: 30px;
-  font-family: Avenir-black;
+  color: #0A336C;
+  font-size: 40px;
+  font-family: Avenir;
   text-transform: uppercase;
 }
 
@@ -56,13 +74,14 @@ body {
 }
 
 .cell--dead {
-  background-color: #b3b3b3;
+  background-color: #FEFEFE
 }
 
 .cell--alive {
-  background-color: #1a1a1a;
+  background-color: #0A336C;
 }
 
 .grid {
-  background-color: #e6e6e6;
+  margin: 0 auto;
+  background-color: #EAF0FA;
 }

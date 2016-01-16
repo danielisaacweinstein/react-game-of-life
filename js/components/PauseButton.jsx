@@ -9,11 +9,12 @@ export class PauseButton extends React.Component {
   }
 
   render() {
-    let buttonText = this.props.isPaused ? "Play." : "Pause.";
+    let buttonText = this.props.isPaused ? "Play" : "Pause";
 
     let cssStyling = classNames({
       'unselectable': true,
       'button': true,
+      'unpaused': !this.props.isPaused
     })
 
     return (

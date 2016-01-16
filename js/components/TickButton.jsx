@@ -18,7 +18,7 @@ export class TickButton extends React.Component {
       <div
         className={cssStyling}
         onClick={this.handleClick.bind(this)}>
-          Tick!
+          Tick
       </div>
     );
   }
