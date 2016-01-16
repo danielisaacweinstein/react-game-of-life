@@ -60,7 +60,7 @@ function updateCell(count) {
 export function tick(state, incomingData) {
   let gridState = state.getIn(['gridState']);
 
-  let nextState = gridState.map(
+  let nextGrid = gridState.map(
     ((row, i, gridContext) => {
       return row.map(
         ((cell, j, rowContext) => {
@@ -71,5 +71,8 @@ export function tick(state, incomingData) {
     }), gridState
   );
 
-  return state.updateIn(['gridState'], () => {return nextState});
+  let nextState = state.updateIn(['gridState'], () => {return nextGrid});
+  nextState = nextState.updateIn(['tickCount'], (count) => {return (count + 1)})
+
+  return nextState;
 }

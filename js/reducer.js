@@ -17,21 +17,27 @@ function setInitialState(state, incomingData) {
     outerArray.push(innerArray);
   }
 
-  return state.merge({gridState: Immutable.fromJS(outerArray), isPaused: true});
+  return state.merge({gridState: Immutable.fromJS(outerArray),
+                      isPaused: true,
+                      tickCount: 0});
 }
 
 // Take the index supplied in incomingData, and use it to highlight
 // the cell located at that index.
 function highlightCell(state, incomingData) {
   let index = incomingData.index;
-  return state.updateIn(['gridState', index[0], index[1], 'alive'],
+  let nextState = state.updateIn(['gridState', index[0], index[1], 'alive'],
                                 (value) => {return true});
+  nextState = nextState.updateIn(['tickCount'], () => {return 0}); // Reset tickCount
+  return nextState;
 }
 
 function unhighlightCell(state, incomingData) {
   let index = incomingData.index;
-  return state.updateIn(['gridState', index[0], index[1], 'alive'],
+  let nextState = state.updateIn(['gridState', index[0], index[1], 'alive'],
                                 (value) => {return false});
+  nextState = nextState.updateIn(['tickCount'], () => {return 0}); // Reset tickCount
+  return nextState;
 }
 
 function pause(state, incomingData) {

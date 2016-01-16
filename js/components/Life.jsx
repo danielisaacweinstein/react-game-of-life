@@ -67,6 +67,7 @@ export class Life extends React.Component {
         />
         <ControlPanel
           isPaused={this.props.isPaused}
+          tickCount={this.props.tickCount}
           onTickClick={this.onTickClick.bind(this)}
           onPauseClick={this.onPauseClick.bind(this)}
           onResetClick={this.onResetClick.bind(this)}
@@ -80,7 +81,8 @@ function mapStateToProps(state) {
   return {
     gridWidth: state.get('gridWidth'),
     gridState: state.get('gridState'),
-    isPaused: state.get('isPaused')
+    isPaused: state.get('isPaused'),
+    tickCount: state.get('tickCount')
   }
 }
 

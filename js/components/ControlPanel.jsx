@@ -5,6 +5,7 @@ import classNames from 'classnames'
 import { TickButton } from './TickButton.jsx'
 import { PauseButton } from './PauseButton.jsx'
 import { ResetButton } from './ResetButton.jsx'
+import { TickCounter } from './TickCounter.jsx'
 
 export class ControlPanel extends React.Component {
   render() {
@@ -23,6 +24,9 @@ export class ControlPanel extends React.Component {
         />
         <ResetButton
           onResetClick={this.props.onResetClick}
+        />
+        <TickCounter
+          tickCount={this.props.tickCount}
         />
       </div>
     );

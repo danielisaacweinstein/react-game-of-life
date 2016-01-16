@@ -85,3 +85,8 @@ body {
   margin: 0 auto;
   background-color: #EAF0FA;
 }
+
+.counter {
+  text-align: center;
+  display: inline-block;
+}
