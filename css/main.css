@@ -8,6 +8,7 @@ body {
   text-align: center;
   display: inline-block;
   font-family: Avenir;
+  color: #0A336C
 }
 
 .leftButton {
@@ -32,7 +33,7 @@ body {
   text-align: center;
   font-family: Avenir-light;
   color: #4E78B2;
-  font-size: 14px;
+  font-size: 18px;
   text-transform: uppercase;
 
   cursor: pointer;
@@ -67,7 +68,7 @@ body {
 
 .banner {
   color: #0A336C;
-  font-size: 39px;
+  font-size: 38px;
   font-family: Avenir;
   text-transform: uppercase;
 }
@@ -90,6 +91,8 @@ body {
   background-color: #EAF0FA;
 }
 
-/*.counter {
+.counter {
   text-align: center;
-}*/
+  font-size: 38px;
+  color: #4E78B2;
+}

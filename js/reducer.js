@@ -37,7 +37,14 @@ function randomize(state, incomingData) {
     outerArray.push(innerArray);
   }
 
-  return state.merge({gridState: Immutable.fromJS(outerArray)});
+  let nextState = state.updateIn(
+                    ['gridState'],
+                    () => {return Immutable.fromJS(outerArray)})
+  nextState = nextState.updateIn(
+                    ['tickCount'],
+                    () => {return 0}); // Reset tickCount
+
+  return nextState;
 }
 
 function getGlider(state, incomingData) {

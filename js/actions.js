@@ -13,46 +13,31 @@ export function setInitialState() {
 
 export function tick() {
   return {
-    type: 'TICK',
-    data: {
-
-    }
+    type: 'TICK'
   }
 }
 
 export function randomize() {
   return {
-    type: 'RANDOMIZE',
-    data: {
-
-    }
+    type: 'RANDOMIZE'
   }
 }
 
 export function getGlider() {
   return {
-    type: 'GET_GLIDER',
-    data: {
-      
-    }
+    type: 'GET_GLIDER'
   }
 }
 
 export function pause() {
   return {
-    type: 'PAUSE',
-    data: {
-
-    }
+    type: 'PAUSE'
   }
 }
 
 export function unpause() {
   return {
-    type: 'UNPAUSE',
-    data: {
-
-    }
+    type: 'UNPAUSE'
   }
 }
 
