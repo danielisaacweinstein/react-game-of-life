@@ -40,21 +40,39 @@ function randomize(state, incomingData) {
   return state.merge({gridState: Immutable.fromJS(outerArray)});
 }
 
+function getGlider(state, incomingData) {
+  let gliderCells = [[2,1], [3,2], [3,3], [2,3], [1,3]];
+  let nextState = state.getIn(['gridState']);
+
+  gliderCells.forEach((index) => {
+    nextState = nextState.updateIn([index[0], index[1], 'alive'],
+                                  () => {return true});
+  })
+
+  return state.merge({gridState: nextState});
+}
+
 // Take the index supplied in incomingData, and use it to highlight
 // the cell located at that index.
 function highlightCell(state, incomingData) {
   let index = incomingData.index;
-  let nextState = state.updateIn(['gridState', index[0], index[1], 'alive'],
-                                (value) => {return true});
-  nextState = nextState.updateIn(['tickCount'], () => {return 0}); // Reset tickCount
+  let nextState = state.updateIn(
+                    ['gridState', index[0], index[1], 'alive'],
+                    (value) => {return true});
+  nextState = nextState.updateIn(
+                    ['tickCount'],
+                    () => {return 0}); // Reset tickCount
   return nextState;
 }
 
 function unhighlightCell(state, incomingData) {
   let index = incomingData.index;
-  let nextState = state.updateIn(['gridState', index[0], index[1], 'alive'],
-                                (value) => {return false});
-  nextState = nextState.updateIn(['tickCount'], () => {return 0}); // Reset tickCount
+  let nextState = state.updateIn(
+                    ['gridState', index[0], index[1], 'alive'],
+                    (value) => {return false});
+  nextState = nextState.updateIn(
+                    ['tickCount'],
+                    () => {return 0}); // Reset tickCount
   return nextState;
 }
 
@@ -83,6 +101,8 @@ function reducer(state = Immutable.Map(), action) {
       return unpause(state, action.data);
     case 'RANDOMIZE':
       return randomize(state, action.data);
+    case 'GET_GLIDER':
+      return getGlider(state, action.data);
   }
   return state;
 }

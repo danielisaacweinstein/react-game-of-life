@@ -5,6 +5,7 @@ import { TickButton } from './TickButton.jsx'
 import { PauseButton } from './PauseButton.jsx'
 import { ResetButton } from './ResetButton.jsx'
 import { RandomizeButton } from './RandomizeButton.jsx'
+import { GliderButton } from './GliderButton.jsx'
 import { TickCounter } from './TickCounter.jsx'
 
 export class ControlPanel extends React.Component {
@@ -15,6 +16,9 @@ export class ControlPanel extends React.Component {
           <div>CONFIGURE</div>
           <RandomizeButton
             onRandomizeClick={this.props.onRandomizeClick}
+          />
+          <GliderButton
+            onGliderClick={this.props.onGliderClick}
           />
         </div>
         <div className='centerButton'>

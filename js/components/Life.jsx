@@ -10,7 +10,8 @@ import { highlight,
          pause,
          unpause,
          setInitialState,
-         randomize } from '../actions.js'
+         randomize,
+         getGlider } from '../actions.js'
 
 export class Life extends React.Component {
   onCellClick(index, currentlyLive) {
@@ -28,6 +29,11 @@ export class Life extends React.Component {
 
   onRandomizeClick() {
     this.props.dispatch(randomize());
+  }
+
+  onGliderClick() {
+    this.props.dispatch(setInitialState());
+    this.props.dispatch(getGlider());
   }
 
   onPauseClick(isPaused) {
@@ -79,6 +85,7 @@ export class Life extends React.Component {
           isPaused={this.props.isPaused}
           tickCount={this.props.tickCount}
           onRandomizeClick={this.onRandomizeClick.bind(this)}
+          onGliderClick={this.onGliderClick.bind(this)}
           onTickClick={this.onTickClick.bind(this)}
           onPauseClick={this.onPauseClick.bind(this)}
           onResetClick={this.onResetClick.bind(this)}

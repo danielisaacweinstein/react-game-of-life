@@ -24,6 +24,15 @@ export function randomize() {
   return {
     type: 'RANDOMIZE',
     data: {
+
+    }
+  }
+}
+
+export function getGlider() {
+  return {
+    type: 'GET_GLIDER',
+    data: {
       
     }
   }
