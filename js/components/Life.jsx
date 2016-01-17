@@ -4,7 +4,13 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { LifeGrid } from './LifeGrid.jsx'
 import { ControlPanel } from './ControlPanel.jsx'
-import { highlight, unhighlight, tick, pause, unpause, setInitialState } from '../actions.js'
+import { highlight,
+         unhighlight,
+         tick,
+         pause,
+         unpause,
+         setInitialState,
+         randomize } from '../actions.js'
 
 export class Life extends React.Component {
   onCellClick(index, currentlyLive) {
@@ -18,6 +24,10 @@ export class Life extends React.Component {
 
   onResetClick() {
     this.props.dispatch(setInitialState());
+  }
+
+  onRandomizeClick() {
+    this.props.dispatch(randomize());
   }
 
   onPauseClick(isPaused) {
@@ -68,6 +78,7 @@ export class Life extends React.Component {
         <ControlPanel
           isPaused={this.props.isPaused}
           tickCount={this.props.tickCount}
+          onRandomizeClick={this.onRandomizeClick.bind(this)}
           onTickClick={this.onTickClick.bind(this)}
           onPauseClick={this.onPauseClick.bind(this)}
           onResetClick={this.onResetClick.bind(this)}

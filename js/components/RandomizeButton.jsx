@@ -2,9 +2,9 @@
 
 import React from 'react'
 
-export class TickButton extends React.Component {
+export class RandomizeButton extends React.Component {
   handleClick() {
-    this.props.onTickClick();
+    this.props.onRandomizeClick();
   }
 
   render() {
@@ -12,7 +12,7 @@ export class TickButton extends React.Component {
       <div
         className='button'
         onClick={this.handleClick.bind(this)}>
-          Tick
+          Randomize
       </div>
     );
   }

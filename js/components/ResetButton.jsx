@@ -10,8 +10,7 @@ export class ResetButton extends React.Component {
 
   render() {
     let cssStyling = classNames({
-      'unselectable': true,
-      'button': true,
+      'button': true
     })
 
     return (

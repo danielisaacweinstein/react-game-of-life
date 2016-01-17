@@ -22,6 +22,24 @@ function setInitialState(state, incomingData) {
                       tickCount: 0});
 }
 
+function randomize(state, incomingData) {
+  let width = state.getIn(['gridState']).size;
+  let outerArray = [];
+
+  for (let i = 0; i < width; i++) {
+    let innerArray = [];
+    for (let j = 0; j < width; j++) {
+      let cellState = Math.random() > (.5) ? true : false;
+      innerArray.push(
+        { index: [i, j],
+          alive: cellState })
+    }
+    outerArray.push(innerArray);
+  }
+
+  return state.merge({gridState: Immutable.fromJS(outerArray)});
+}
+
 // Take the index supplied in incomingData, and use it to highlight
 // the cell located at that index.
 function highlightCell(state, incomingData) {
@@ -63,6 +81,8 @@ function reducer(state = Immutable.Map(), action) {
       return pause(state, action.data);
     case 'UNPAUSE':
       return unpause(state, action.data);
+    case 'RANDOMIZE':
+      return randomize(state, action.data);
   }
   return state;
 }

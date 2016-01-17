@@ -20,6 +20,15 @@ export function tick() {
   }
 }
 
+export function randomize() {
+  return {
+    type: 'RANDOMIZE',
+    data: {
+      
+    }
+  }
+}
+
 export function pause() {
   return {
     type: 'PAUSE',

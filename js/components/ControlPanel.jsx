@@ -1,33 +1,41 @@
 "use strict"
 
 import React from 'react'
-import classNames from 'classnames'
 import { TickButton } from './TickButton.jsx'
 import { PauseButton } from './PauseButton.jsx'
 import { ResetButton } from './ResetButton.jsx'
+import { RandomizeButton } from './RandomizeButton.jsx'
 import { TickCounter } from './TickCounter.jsx'
 
 export class ControlPanel extends React.Component {
   render() {
-    var panelClass = classNames({
-      'buttonPanel': true
-    });
-
     return (
-      <div className={panelClass}>
-        <TickButton
-          onTickClick={this.props.onTickClick}
-        />
-        <PauseButton
-          isPaused={this.props.isPaused}
-          onPauseClick={this.props.onPauseClick}
-        />
-        <ResetButton
-          onResetClick={this.props.onResetClick}
-        />
-        <TickCounter
-          tickCount={this.props.tickCount}
-        />
+      <div>
+        <div className='leftButton'>
+          <div>CONFIGURE</div>
+          <RandomizeButton
+            onRandomizeClick={this.props.onRandomizeClick}
+          />
+        </div>
+        <div className='centerButton'>
+          <div>CONTROL</div>
+          <TickButton
+            onTickClick={this.props.onTickClick}
+          />
+          <PauseButton
+            isPaused={this.props.isPaused}
+            onPauseClick={this.props.onPauseClick}
+          />
+          <ResetButton
+            onResetClick={this.props.onResetClick}
+          />
+        </div>
+        <div className='rightButton'>
+          <div>COUNT</div>
+          <TickCounter
+            tickCount={this.props.tickCount}
+          />
+        </div>
       </div>
     );
   }
