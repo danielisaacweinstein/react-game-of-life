@@ -68,7 +68,6 @@ export class Life extends React.Component {
   }
 
   render() {
-    const { dispatch } = this.props;
     let title = "Conway's Game of Life"
 
     return (
